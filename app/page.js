@@ -9,6 +9,7 @@ export default function Home() {
         <Image
           src={therapyOne}
           className="w-full h-[80vh] object-cover object-top"
+          alt="therapy"
         />
         <div className="absolute w-full h-full left-0 top-0 bg-[rgba(0,0,0,0.7)] text-white flex justify-center items-center">
           <div className="py-20 text-center">
