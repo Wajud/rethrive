@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import aboutBg from "@/public/images/about-bg.jpg";
 import Link from "next/link";
+import Footer from "../components/Footer";
 
 const About = () => {
   return (
@@ -451,6 +452,7 @@ const About = () => {
         </div>
       </section>
       {/* End of Team Section */}
+      <Footer />
     </div>
   );
 };

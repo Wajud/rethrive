@@ -1,6 +1,7 @@
 import Image from "next/image";
 import therapyOne from "@/public/images/therapy-one.jpg";
 import Link from "next/link";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
@@ -142,6 +143,7 @@ export default function Home() {
       </section>
 
       {/* End of Community Section */}
+      <Footer />
     </div>
   );
 }

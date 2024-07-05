@@ -1,7 +1,6 @@
 import { Inter, Nabla } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +17,6 @@ export default function RootLayout({ children }) {
           <Navbar />
         </div>
         <div className="relative top-16">{children}</div>
-        <Footer />
       </body>
     </html>
   );
