@@ -5,7 +5,6 @@ import Link from "next/link";
 const Login = () => {
   return (
     <div className="bg-green-100 grid grid-cols-2 mb-12 relative">
-     
       <Image
         src={banner}
         className="w-full h-full max-h-[90vh]  object-cover"
