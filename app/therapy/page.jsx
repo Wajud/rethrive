@@ -3,7 +3,7 @@ import React from "react";
 const Therapy = () => {
   return (
     <div>
-      <h1>Therapy Page</h1>
+      <h1 className="h-[100vh]">Therapy Page</h1>
     </div>
   );
 };
