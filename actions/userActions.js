@@ -53,11 +53,12 @@ const login = async (formData) => {
       email,
       password,
     });
-    redirect("/profile");
   } catch (error) {
     console.log("Error Signing in");
     throw new Error("Error Signing in");
   }
+
+  redirect("/profile");
 };
 
 export { register, login };

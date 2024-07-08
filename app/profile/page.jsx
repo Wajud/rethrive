@@ -2,9 +2,14 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import getSession from "@/lib/getSession";
+import { redirect } from "next/navigation";
 
 const Profile = async () => {
   const session = await getSession();
+  // const user = session?.user;
+  if (!session) {
+    redirect("/login");
+  }
   console.log(session);
   return (
     <div className="bg-green-50 pl-24 pt-24 pb-16 grid grid-cols-2 gap-16 text-green-700">

@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import getSession from "@/lib/getSession";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -12,7 +13,10 @@ const Navbar = () => {
     { name: "about", route: "/about" },
     { name: "therapy", route: "/therapy" },
     { name: "profile", route: "/profile" },
-    { name: "Sign in", route: "/login" },
+    {
+      name: "Sign in",
+      route: "/login",
+    },
   ];
   return (
     <nav className="bg-green-800 text-white font-semibold flex justify-between items-center pl-8 fixed top-0 left-0 w-full z-50">

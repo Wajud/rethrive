@@ -1,6 +1,7 @@
 import Image from "next/image";
 import banner from "@/public/images/signin-banner.jpg";
 import Link from "next/link";
+import { login } from "@/actions/userActions";
 
 const Login = () => {
   return (
@@ -11,7 +12,7 @@ const Login = () => {
         alt="banner"
       />
       <div className="pl-32 pt-20">
-        <form>
+        <form action={login}>
           <h1 className="text-2xl font-semibold text-gray-900  mb-8">
             SIGN IN
           </h1>
