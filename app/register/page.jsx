@@ -1,6 +1,7 @@
 import Image from "next/image";
 import banner from "@/public/images/register-banner.png";
 import Link from "next/link";
+import { register } from "@/actions/userActions";
 
 const Register = () => {
   return (
@@ -11,7 +12,7 @@ const Register = () => {
         alt="banner"
       />
       <div className="pl-32 pt-16">
-        <form>
+        <form action={register}>
           <h1 className="text-2xl font-semibold text-gray-900  mb-8">
             CREATE AN ACCOUNT
           </h1>

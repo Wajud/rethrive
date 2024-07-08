@@ -1,8 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import getSession from "@/lib/getSession";
 
-const Profile = () => {
+const Profile = async () => {
+  const session = await getSession();
+  console.log(session);
   return (
     <div className="bg-green-50 pl-24 pt-24 pb-16 grid grid-cols-2 gap-16 text-green-700">
       <div>

@@ -3,8 +3,11 @@ import Image from "next/image";
 import aboutBg from "@/public/images/about-bg.jpg";
 import Link from "next/link";
 import Footer from "../components/Footer";
+import connectToDb from "@/lib/db";
 
 const About = () => {
+  connectToDb();
+
   return (
     <div>
       <div className="relative">
