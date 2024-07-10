@@ -1,7 +1,7 @@
 import Image from "next/image";
-import banner from "@/public/images/register-banner.png";
+import banner from "/public/images/register-banner.png";
 import Link from "next/link";
-import { register } from "@/actions/userActions";
+import { register } from "/actions/userActions";
 
 const Register = () => {
   return (

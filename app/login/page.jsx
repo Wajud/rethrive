@@ -1,7 +1,7 @@
 import Image from "next/image";
-import banner from "@/public/images/signin-banner.jpg";
+import banner from "../../public/images/signin-banner.jpg";
 import Link from "next/link";
-import { login } from "@/actions/userActions";
+import { login } from "../../actions/userActions";
 
 const Login = () => {
   return (

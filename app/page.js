@@ -1,11 +1,15 @@
 import Image from "next/image";
-import therapyOne from "@/public/images/therapy-one.jpg";
+import therapyOne from "../public/images/therapy-one.jpg";
 import Link from "next/link";
 import Footer from "./components/Footer";
+import { auth } from "/auth";
+import LoggedInNavbar from "./components/LoggedInNavbar";
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth();
   return (
     <div>
+      {session ? <LoggedInNavbar /> : ""}
       <div className="relative">
         <Image
           src={therapyOne}

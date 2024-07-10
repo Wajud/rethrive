@@ -1,15 +1,19 @@
 import React from "react";
 import Image from "next/image";
-import aboutBg from "@/public/images/about-bg.jpg";
+import aboutBg from "../../public/images/about-bg.jpg";
 import Link from "next/link";
 import Footer from "../components/Footer";
-import connectToDb from "@/lib/db";
+import connectToDb from "../../lib/db";
+import { auth } from "/auth";
+import LoggedInNavbar from "../components/LoggedInNavbar";
 
-const About = () => {
+const About = async () => {
+  const session = await auth();
   connectToDb();
 
   return (
     <div>
+      {session ? <LoggedInNavbar /> : ""}
       <div className="relative">
         <Image
           src={aboutBg}

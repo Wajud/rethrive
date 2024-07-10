@@ -1,9 +1,9 @@
 "use server";
-import connectToDb from "@/lib/db";
+import connectToDb from "../lib/db";
 import { hash } from "bcryptjs";
-import { User } from "@/models/userModel";
+import { User } from "/models/userModel";
 import { redirect } from "next/navigation";
-import { signIn } from "@/auth";
+import { signIn, signOut } from "/auth";
 
 const register = async (formData) => {
   const firstName = formData.get("firstName");
@@ -61,4 +61,8 @@ const login = async (formData) => {
   redirect("/profile");
 };
 
-export { register, login };
+const logOut = async () => {
+  await signOut();
+};
+
+export { register, login, logOut };
