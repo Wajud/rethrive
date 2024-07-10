@@ -7,11 +7,11 @@ import Redirect from "/app/components/Redirect";
 
 const Profile = async () => {
   const session = await getSession();
-  // const user = session?.user;
+  const user = session?.user;
   if (!session) {
     redirect("/login");
   }
-  console.log(session);
+  console.log(session.user);
   return (
     <div>
       {session ? (
@@ -25,31 +25,30 @@ const Profile = async () => {
             />
             <h2 className="font-semibold text-2xl uppercase my-8">About Me</h2>
             <p className="leading-loose">
-              I'm an individual seeking personal growth and self-improvement.
-              I'm committed to prioritizing my mental health and well-being
-              through therapy and self-care. I am looking forward to connecting
-              with a supportive community and working towards a happier,
-              healthier me.
+              {user.about ||
+                "I'm an individual seeking personal growth and self-improvement. I'm committed to prioritizing my mental health and well-being through therapy and self-care. I am looking forward to connecting with a supportive community and working towards a happier, healthier me."}
             </p>
           </div>
           <div className="py-16 pl-20">
-            <h1 className="mb-8 text-xl font-semibold">Hi, I'm Amaka</h1>
+            <h1 className="mb-8 text-xl font-semibold">
+              Hi, I'm {user.firstName || "Amaka"}
+            </h1>
             <div className="flex flex-col gap-4">
               <div className="flex gap-4">
                 <p className="w-12">Age:</p>
-                <p>20</p>
+                <p>{user.age || "20"}</p>
               </div>
               <div className="flex gap-4">
                 <p className="w-12">Email:</p>
-                <p>amaka@gmail.com</p>
+                <p>{user.email || "amaka@gmail.com"}</p>
               </div>
               <div className="flex gap-4">
                 <p className="w-12">City:</p>
-                <p>Ikeja</p>
+                <p>{user.city || "Ikeja"}</p>
               </div>
               <div className="flex gap-4">
                 <p className="w-12">State:</p>
-                <p>Lagos</p>
+                <p>{user.state || "Lagos"}</p>
               </div>
             </div>
             <Link
