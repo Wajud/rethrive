@@ -18,6 +18,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         if (!email || !password) {
           throw new Error("Invalid Email or Password");
         }
+
         const user = await User.findOne({ email });
 
         if (!user) {
@@ -40,6 +41,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           email: user.email,
           role: user.role,
           id: user._id,
+          about: user.about,
+          city: user.city,
+
+          state: user.state,
         };
 
         return userData;
@@ -57,12 +62,20 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         // User is available during sign-in
         token.id = user.id;
         token.firstName = user.firstName;
+        token.userName = user.userName;
+        token.city = user.city;
+        token.state = user.state;
+        token.about = user.about;
       }
       return token;
     },
     session({ session, token }) {
       session.user.id = token.id;
       session.user.firstName = token.firstName;
+      session.user.userName = token.userName;
+      session.user.city = token.city;
+      session.user.state = token.state;
+      session.user.about = token.about;
       return session;
     },
 

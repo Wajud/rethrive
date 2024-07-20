@@ -4,6 +4,7 @@ import { hash } from "bcryptjs";
 import { User } from "/models/userModel";
 import { redirect } from "next/navigation";
 import { signIn, signOut } from "/auth";
+import { revalidatePath } from "next/cache";
 
 const register = async (formData) => {
   const firstName = formData.get("firstName");
@@ -58,6 +59,8 @@ const login = async (formData) => {
     throw new Error("Error Signing in");
   }
 
+  revalidatePath("/profile");
+
   redirect("/profile");
 };
 
@@ -65,4 +68,46 @@ const logOut = async () => {
   await signOut();
 };
 
-export { register, login, logOut };
+const updateBio = async (formData) => {
+  let { id, about, userName, email, city, state } =
+    Object.fromEntries(formData);
+
+  try {
+    await connectToDb();
+
+    const updatedFields = { about, userName, email, city, state };
+
+    const currentUser = await User.findById(id);
+
+    // console.log(currentUser.firstName);
+    about =
+      updatedFields.about === "" ? currentUser.about : updatedFields.about;
+    city = updatedFields.city === "" ? currentUser.city : updatedFields.city;
+    state =
+      updatedFields.state === "" ? currentUser.state : updatedFields.state;
+    userName =
+      updatedFields.userName === ""
+        ? currentUser.userName
+        : updatedFields.userName;
+
+    const updatedUser = {
+      firstName: currentUser.firstName,
+      lastName: currentUser.lastName,
+      about,
+      city,
+      state,
+      userName,
+    };
+
+    await User.findByIdAndUpdate(id, updatedUser);
+    console.log("updatedUser: ", updatedUser);
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to Update user");
+  }
+
+  revalidatePath("/profile");
+  redirect("/profile");
+};
+
+export { register, login, logOut, updateBio };

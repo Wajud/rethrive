@@ -5,7 +5,7 @@ import LoggedInNavbar from "../components/LoggedInNavbar";
 
 export default function Layout({ children }) {
   return (
-    <div>
+    <div className="bg-green-50">
       <LoggedInNavbar />
       <div className="flex">
         <ProfileSidebar />

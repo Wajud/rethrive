@@ -1,11 +1,20 @@
 import React from "react";
 import Image from "next/image";
+import { updateBio } from "../../../actions/userActions";
+import getSession from "../../../lib/getSession";
+import { redirect } from "next/navigation";
 
-const Settings = () => {
+const Settings = async () => {
+  const session = await getSession();
+  const user = session?.user;
+  console.log("user: ", user);
+  if (!user) {
+    redirect("/login");
+  }
   return (
     <div className="bg-green-50 pl-24 pt-24 pb-16 grid grid-cols-2 gap-16 text-green-700">
       <div>
-        <form className="">
+        <form className="" action={updateBio}>
           <div className="flex gap-8 mb-12">
             <Image
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrBp4rAadRiXmk6NWl3redkvGJgWGDkBT4vA&usqp=CAU"
@@ -35,7 +44,7 @@ const Settings = () => {
               <input
                 type="text"
                 id="username"
-                name="username"
+                name="userName"
                 className="block w-80 px-2 pb-1 pt-2 border-b-2 border-green-800 bg-green-100 focus:outline-none placeholder:text-gray-400"
               />
             </div>
@@ -46,7 +55,14 @@ const Settings = () => {
               <input
                 type="email"
                 id="email"
+                value={user && user.email}
+                disabled
+                className="block w-80 px-2 pb-1 pt-2 border-b-2 border-green-800 bg-green-100 focus:outline-none placeholder:text-gray-400"
+              />
+              <input
+                type="hidden"
                 name="email"
+                value={user && user.email}
                 className="block w-80 px-2 pb-1 pt-2 border-b-2 border-green-800 bg-green-100 focus:outline-none placeholder:text-gray-400"
               />
             </div>
@@ -74,6 +90,12 @@ const Settings = () => {
                 className="block w-80 px-2 pb-1 pt-2 border-b-2 border-green-800 bg-green-100 focus:outline-none placeholder:text-gray-400"
               />
             </div>
+            <input
+              type="hidden"
+              value={user && user.id}
+              name="id"
+              className="block w-80 px-2 pb-1 pt-2 border-b-2 border-green-800 bg-green-100 focus:outline-none placeholder:text-gray-400"
+            />
             <button className="uppercase text-white block w-fit font-semibold px-12 py-2 rounded-md bg-green-800 hover:bg-green-600 transition-all">
               save
             </button>

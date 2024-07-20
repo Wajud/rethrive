@@ -8,6 +8,10 @@ const userSchema = new Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
   role: { type: String, default: "user" },
+  userName: { type: String },
+  about: { type: String },
+  state: { type: String },
+  city: { type: String },
 });
 
 export const User = mongoose.models?.User || mongoose.model("User", userSchema);
