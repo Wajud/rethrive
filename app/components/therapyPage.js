@@ -4,6 +4,7 @@ import connectToDb from "../../lib/db";
 import Image from "next/image";
 import Footer from "./Footer";
 import Pagination from "../components/pagination";
+import SearchTherapist from "./searchTherapist";
 import { fetchTherapists } from "../../lib/data";
 
 const TherapyPage = async ({ searchParams }) => {
@@ -16,9 +17,9 @@ const TherapyPage = async ({ searchParams }) => {
     page
   );
 
-  console.log(therapists);
+  // console.log(therapists);
   console.log(searchParams);
-  console.log("page: ", page);
+
   return (
     <div className="bg-gray-50 ">
       <div className="pb-16 px-10 pt-10">
@@ -26,36 +27,11 @@ const TherapyPage = async ({ searchParams }) => {
           SEARCH DOCTOR. BOOK APPOINTMENT
         </h1>
         <div className="grid grid-cols-4 gap-8 pt-6">
-          <aside className="bg-white px-2 py-6 pt-20 col-span-1 flex flex-col items-center rounded-md">
-            <div className="flex flex-col gap-8 pt-8 pb-12">
-              <div>
-                <p className="mb-1 text-green-600 text-sm">SEARCH BY NAME</p>
-                <input
-                  type="text"
-                  placeholder="Search by Name..."
-                  className="px-2 py-[5px]  rounded-sm border border-green-200 placeholder:text-xs"
-                />
-              </div>
-              <div>
-                <p className="mb-1 text-green-600 text-sm">
-                  SEARCH BY SPECIALTY
-                </p>
-                <input
-                  type="text"
-                  placeholder="Search by Specialty..."
-                  className="px-2 py-[5px]  rounded-sm border border-green-200 placeholder:text-xs"
-                />
-              </div>
-              <div>
-                <p className="mb-1 text-green-600 text-sm">
-                  SEARCH BY LOCATION
-                </p>
-                <input
-                  type="text"
-                  placeholder="Search by State..."
-                  className="px-2 py-[5px]  rounded-sm border border-green-200 placeholder:text-xs"
-                />
-              </div>
+          <aside className="bg-white px-2 py-6 pt-12 col-span-1 flex flex-col items-center rounded-md">
+            <div className="flex flex-col gap-8 pb-12">
+              <SearchTherapist flag="Name" criteria="firstName" />
+              <SearchTherapist flag="Specialty" criteria="specialty" />
+              <SearchTherapist flag="Location" criteria="location" />
             </div>
           </aside>
 
