@@ -22,13 +22,10 @@ const SearchTherapist = ({ flag, criteria }) => {
 
   return (
     <div>
-      <p className="mb-1 text-green-600 text-sm">
-        SEARCH BY {flag.toUpperCase()}
-      </p>
       <input
         type="text"
-        placeholder={`Search by ${flag}...`}
-        className="px-2 py-[5px]  rounded-sm border border-green-200 placeholder:text-xs"
+        placeholder={`SEARCH...`}
+        className="block w-full px-2 py-[5px] rounded-full border border-green-200 placeholder:text-xs outline-none"
         name={criteria}
         onChange={filterTherapist}
       />
