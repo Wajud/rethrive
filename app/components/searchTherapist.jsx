@@ -12,6 +12,7 @@ const SearchTherapist = ({ flag, criteria }) => {
     params.set("page", 1);
     if (e.target.value) {
       e.target.value.length >= 2 && params.set("q", e.target.value);
+
       console.log(e.target.value);
     } else {
       params.delete("q");

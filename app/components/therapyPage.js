@@ -17,7 +17,7 @@ const TherapyPage = async ({ searchParams }) => {
     page
   );
 
-  // console.log(therapists);
+  console.log(therapists);
   console.log(searchParams);
 
   return (
@@ -58,7 +58,10 @@ const TherapyPage = async ({ searchParams }) => {
                       1
                     )}.`}</p>
 
-                    <p className="-mt-2">{therapist.location}</p>
+                    <p className="-mt-1 mb-1 text-sm text-center">
+                      {therapist.field}
+                    </p>
+                    <p className="-mt-2 text-sm">{therapist.location}</p>
                   </div>
                 ))}
             </div>
